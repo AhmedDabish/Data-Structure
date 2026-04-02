@@ -1,4 +1,8 @@
-﻿using Data_Structure.LinkedList;
+﻿using System;
+using Data_Structure.BinarySearch;
+using Data_Structure.InsertionSort;
+using Data_Structure.LinkedList;
+using Data_Structure.Merge_Sort;
 using Data_Structure.Queue;
 using Data_Structure.Stack;
 using Data_Structure.Tree;
@@ -9,6 +13,34 @@ namespace Data_Structure
     {
         static void Main(string[] args)
         {
+            // ===== Merge Sort =====
+            int[] arr = { 8, 3, 5, 4, 2, 1 };
+            Console.WriteLine("Before MergeSort: " + string.Join(", ", arr));
+            MergeSort.Sort(arr);
+            Console.WriteLine("After MergeSort:  " + string.Join(", ", arr));
+            Console.WriteLine();
+
+            // ===== Insertion Sort =====
+            int[] arr1 = { 8, 3, 5, 4, 2, 1 };
+            Console.WriteLine("Before InsertionSort: " + string.Join(", ", arr1));
+            insertionsort.Sort(arr1); 
+            Console.WriteLine("After InsertionSort:  " + string.Join(", ", arr1));
+            Console.WriteLine();
+
+            // ===== Binary Search =====
+            int[] arr3 = { 1, 3, 4, 5, 6, 7, 8 }; // Must be sorted
+            int target = 5;
+
+            int index = binarysearch.Search(arr3, target);
+
+            if (index != -1)
+                Console.WriteLine($"Element {target} found at index: {index}");
+            else
+                Console.WriteLine($"Element {target} not found in the array");
+
+            Console.WriteLine();
+
+            // ===== Optional: Test LinkedList / Stack / Queue / Tree =====
             Console.WriteLine("Choose Test:");
             Console.WriteLine("1 - LinkedList");
             Console.WriteLine("2 - Stack");
@@ -34,6 +66,7 @@ namespace Data_Structure
             }
         }
 
+        // ===== LinkedList Test =====
         static void TestLinkedList()
         {
             DoublyLinkedList list = new DoublyLinkedList();
@@ -49,6 +82,7 @@ namespace Data_Structure
             list.PrintBackward();
         }
 
+        // ===== Stack Test =====
         static void TestStack()
         {
             MyStack stack = new MyStack();
@@ -63,6 +97,7 @@ namespace Data_Structure
             stack.Print();
         }
 
+        // ===== Queue Test =====
         static void TestQueue()
         {
             MyQueue queue = new MyQueue(5);
@@ -76,6 +111,7 @@ namespace Data_Structure
             queue.Print();
         }
 
+        // ===== Binary Tree Test =====
         static void TestTree()
         {
             BinaryTree tree = new BinaryTree();
@@ -92,9 +128,11 @@ namespace Data_Structure
 
             Console.WriteLine("PreOrder:");
             tree.PreOrder();
+            Console.WriteLine();
 
             Console.WriteLine("PostOrder:");
             tree.PostOrder();
+            Console.WriteLine();
         }
     }
 }
